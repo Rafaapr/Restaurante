@@ -1,10 +1,9 @@
 package com.shakeel.model;
 
 import javax.persistence.*;
-import java.util.Set;
 
 /**
- * Created by Rafael L Silva 03/09/2019.
+ * Created by shakeelosmani on 24/12/16.
  */
 
 @Entity
@@ -18,9 +17,6 @@ public class Product {
     private String productName;
 
     private Double productPrice;
-
-    public Product() {
-    }
 
     public Long getProductId() {
         return productId;
@@ -46,11 +42,6 @@ public class Product {
         this.productPrice = productPrice;
     }
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE} , fetch = FetchType.LAZY)
-    @JoinTable(name = "ORDER_PRODUCTS", joinColumns = {@JoinColumn(name = "ORDER_ID")},inverseJoinColumns = {@JoinColumn(name = "PRODUCT_ID")})
-    private Set<Product> products;
-
-    @OneToOne
-    private Customer customer;
 
 }
+
